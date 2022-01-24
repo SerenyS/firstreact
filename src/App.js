@@ -7,8 +7,8 @@ import Country from './components/country';
 class App extends Component {
   state = {
     countries: [
-      { id: 1, name: 'United States', gold: 2 },
-      { id: 2, name: 'China', gold: 3 },
+      { id: 1, name: 'Venezuela', gold: 5 },
+      { id: 2, name: 'Koreaa', gold: 8 },
       { id: 3, name: 'Germany', gold: 0 },
     ]
   }
