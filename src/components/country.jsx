@@ -5,15 +5,18 @@ import Card from '@mui/material/Card';
 import { CardContent } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Trophy from '@mui/icons-material/EmojiEvents';
+import countries from '../countries.json'
 
 
   
 class Country extends React.Component {
+ 
     constructor(props) {
       super(props);
+    
       this.state = {
-        name: "United States",
-        gold: 0,
+        name: this.props.country.name,
+        gold: this.props.country.gold,
       };
     }
     
@@ -25,6 +28,12 @@ class Country extends React.Component {
         });
       };
 
+      handleReduction() {
+        this.setState({
+          gold: this.state.gold -1
+        });
+      };
+
     render() {
       return (
         <Box 
@@ -32,6 +41,7 @@ class Country extends React.Component {
         display="flex" 
         alignItems="center"
         justifyContent="center">
+          
         <Card variant="outlined">
            <CardContent>
            <Typography variant="h5" component="div">{this.state.name}</Typography>
@@ -40,6 +50,7 @@ class Country extends React.Component {
             Gold Metals:{this.state.gold}
           </div>
           <Button variant="outlined" onClick={(e) => this.handleIncrement(e)}>+</Button>
+          <Button variant="outlined" disabled={ this.state.gold === 0 }  onClick={(e) => this.handleReduction(e)}>-</Button>
           </CardContent>
         </Card>
         </Box>

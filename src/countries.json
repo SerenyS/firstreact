@@ -1,0 +1,6 @@
+[
+  { "id": 1, "name":"United States", "goldMedalCount": 2 },
+  { "id": 2, "name": "China", "goldMedalCount": 3 },
+  { "id": 3, "name": "Germany", "goldMedalCount": 0 }
+]
+  
