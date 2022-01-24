@@ -5,7 +5,6 @@ import Card from '@mui/material/Card';
 import { CardContent } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Trophy from '@mui/icons-material/EmojiEvents';
-import countries from '../countries.json'
 
 
   
