@@ -8,7 +8,7 @@ class App extends Component {
   state = {
     countries: [
       { id: 1, name: 'Venezuela', gold: 5 },
-      { id: 2, name: 'Koreaa', gold: 8 },
+      { id: 2, name: 'Korea', gold: 8 },
       { id: 3, name: 'Germany', gold: 0 },
     ]
   }
