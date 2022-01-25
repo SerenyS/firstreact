@@ -1,55 +1,73 @@
 import React from 'react';
-import Button from '@mui/material/Button';
+//import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import { CardContent } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Trophy from '@mui/icons-material/EmojiEvents';
+import Medal from './medal';
 
 
   
 class Country extends React.Component {
+
+  totalMedals(country,medals){
+    let medalsTotal = 0;
+    medals.forEach(medal => { medalsTotal+= country[medal.name];});
+    return medalsTotal;
+  }
  
-    constructor(props) {
-      super(props);
+    // constructor(props) {
+    //   super(props);
     
-      this.state = {
-        name: this.props.country.name,
-        gold: this.props.country.gold,
-      };
-    }
+    //   this.state = {
+    //     name: this.props.country.name,
+    //     gold: this.props.country.gold,
+    //   };
+    // }
+    
     
 
+    // handleIncrement() {
+    //     this.setState({
+    //       gold: this.state.gold + 1
+    //     });
+    //   };
 
-    handleIncrement() {
-        this.setState({
-          gold: this.state.gold + 1
-        });
-      };
-
-      handleReduction() {
-        this.setState({
-          gold: this.state.gold -1
-        });
-      };
+    //   handleReduction() {
+    //     this.setState({
+    //       gold: this.state.gold -1
+    //     });
+    //   };
 
     render() {
+      const {country,medals,increase, decrease} =this.props;
+       
       return (
         <Box 
         width={300} height={300} 
         display="flex" 
         alignItems="center"
-        justifyContent="center">
+        justifyContent="center"
+        borderColor="pink">
           
         <Card variant="outlined">
            <CardContent>
-           <Typography variant="h5" component="div">{this.state.name}</Typography>
+           <Typography variant="h5" component="div">{country.name}</Typography>
            <Trophy/>
+           <span>{this.totalMedals(country,medals)}</span>
           <div>
-            Gold Metals:{this.state.gold}
+          {medals.map(medal=> 
+            <Medal
+            key={ medal.id } 
+            country={ country } 
+            medal={ medal } 
+            increase={ increase } 
+            decrease={ decrease } />
+            
+            )}
           </div>
-          <Button variant="outlined" onClick={(e) => this.handleIncrement(e)}>+</Button>
-          <Button variant="outlined" disabled={ this.state.gold === 0 }  onClick={(e) => this.handleReduction(e)}>-</Button>
+        
           </CardContent>
         </Card>
         </Box>
