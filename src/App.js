@@ -3,6 +3,7 @@ import './App.css';
 import React, { Component } from 'react';
 import Country from './components/country'; 
 //import countries from'./countries.json';
+import NewCountry from './components/newCountry';
 
 class App extends Component {
   state = {
@@ -31,6 +32,18 @@ class App extends Component {
     this.setState({ countries: countries });
   }
 
+  handleDelete = (countryId) => {
+    const { countries } = this.state;
+    const mutableCountries = [...countries].filter(c => c.id !== countryId);
+    this.setState({ countries: mutableCountries });
+  }
+
+  handleAdd = (name) => {
+    const { countries } = this.state;
+    const id = countries.length === 0 ? 1 : Math.max(...countries.map(country => country.id)) + 1;
+    const mutableCountries = [...countries].concat({ id: id, name: name, Gold: 0, Silver: 0, Bronze: 0 });
+    this.setState({ countries: mutableCountries });
+  }
   AllMedalsTotal() {
     let allMedals= 0;
     this.state.medals.forEach(medal => { allMedals+= this.state.countries.reduce((a, b) => a + b[medal.name], 0); });
@@ -53,9 +66,12 @@ class App extends Component {
                 country={ country } 
                 medals={ this.state.medals }
                 increase={ this.handleIncrease} 
-                decrease={ this.handleDecrease } />
+                decrease={ this.handleDecrease }
+                deleteCountry = {this.handleDelete} />
             )}
      </div>
+     <NewCountry onAdd={ this.handleAdd } />
+    
       </React.Fragment>
     );
   }

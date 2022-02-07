@@ -41,7 +41,7 @@ class Country extends React.Component {
     //   };
 
     render() {
-      const {country,medals,increase, decrease} =this.props;
+      const {country,medals,increase, decrease ,deleteCountry} =this.props;
        
       return (
         <Box 
@@ -66,6 +66,7 @@ class Country extends React.Component {
             decrease={ decrease } />
             
             )}
+             <button onClick={() => deleteCountry(country.id)}> Delete </button>
           </div>
         
           </CardContent>
